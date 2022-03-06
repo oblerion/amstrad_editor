@@ -1,9 +1,9 @@
 CC=clang++
-main: main.o
-	$(CC) -o main main.o
-
-main.o: main.cpp 
-	$(CC) -c main.cpp -W -Wall -ansi -pedantic
-	
+EXEC=main
+ARG=-W -Wall -pedantic
+$(EXEC): main.o
+	$(CC) obj/main.o -o $(EXEC) $(ARG) 
+main.o: src/main.cpp 
+	$(CC) -c src/main.cpp -o obj/main.o $(ARG)	
 clean:
-	rm main main.o
+	rm -f obj/*.o
