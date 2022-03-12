@@ -43,13 +43,25 @@ function link(){
 if [ $# -eq 0 ];then 
 # default
 	init $CC " " "$CFLAGS" $EXEC $DOBJ;
+	comp cfile.cpp;
+	comp dirent2.cpp;
 	comp main.cpp;
 	link;
 elif [ -n $1 ] && [ "$1" == "w" ];then
 # w win32
 	init $CC2 " " "$CFLAGS2" $EXEC2 $DOBJ2;
+	comp cfile.cpp;
+	comp dirent2.cpp;
 	comp main.cpp;
 	link;
+elif [ -n $1 ] && [ "$1" == "we" ];then
+	init $CC2 " " "$CFLAGS2" $EXEC2 $DOBJ2;
+	comp cfile.cpp;
+	comp dirent2.cpp;
+	comp main.cpp;
+	link;
+	command wine $EXEC2; 
+
 elif [ -n $1 ] && [ "$1" == "c" ];then
 # c clear
 	rm -f $TDOBJ*.o;
